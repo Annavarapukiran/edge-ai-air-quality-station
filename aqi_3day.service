@@ -1,0 +1,14 @@
+[Unit]
+Description=Edge-AI Air Quality Monitoring Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/aqi-monitoring-station/raspberry_pi
+ExecStart=/usr/bin/python3 /home/pi/aqi-monitoring-station/raspberry_pi/live_aqi_dashboard.py --port /dev/ttyACM0 --model rf
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
